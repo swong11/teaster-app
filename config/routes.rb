@@ -55,4 +55,6 @@ Teaster::Application.routes.draw do
   #   end
 
   root 'places#index'
+
+  resources :places
 end
