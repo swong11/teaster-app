@@ -12,6 +12,7 @@ class PlacesController < ApplicationController
 		redirect_to root_path  #redirect user back to home
 	end
 
+
 	private
 # suck in the values from the user after they press create
 	def place_params
