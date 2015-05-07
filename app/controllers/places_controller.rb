@@ -1,4 +1,6 @@
 class PlacesController < ApplicationController
+	before_action :authenticate_user!, :only => [:new, :create] #filter
+
 	def index
 	  @places = Place.all
 	end
@@ -10,6 +12,11 @@ class PlacesController < ApplicationController
 	def create
 		Place.create(place_params) # sends what the user inputted from form into the DB
 		redirect_to root_path  #redirect user back to home
+	end
+
+	def create
+  		current_user.places.create(place_params)
+  		redirect_to root_path
 	end
 
 
