@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-	before_action :authenticate_user!, :only => [:new, :create] #filter
+	before_action :authenticate_user!, :only => [:new, :create] #filter to only allow signed in users to create new places
 
 	def index
 	  @places = Place.all
@@ -14,6 +14,7 @@ class PlacesController < ApplicationController
 		redirect_to root_path  #redirect user back to home
 	end
 
+# create a place that is connected by a particular user
 	def create
   		current_user.places.create(place_params)
   		redirect_to root_path
