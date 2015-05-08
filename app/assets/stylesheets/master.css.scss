@@ -33,3 +33,8 @@ body {
   font-family: 'pacificoregular', sans-serif;
 
 }
+
+/*remove asterisks*/
+abbr[title="required"] {
+  display: none;
+}
