@@ -1,8 +1,8 @@
 class PlacesController < ApplicationController
 	before_action :authenticate_user!, :only => [:new, :create] #filter to only allow signed in users to create new places
 
-	def index
-	  @places = Place.all
+	def index	
+	  @places = Place.order(:name).page(params[:page]) 
 	end
 
 	def new
@@ -26,5 +26,6 @@ class PlacesController < ApplicationController
 	def place_params
 		params.require(:place).permit(:name, :description, :address)
 	end
+
 
 end
