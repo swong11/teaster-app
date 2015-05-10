@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-	before_action :authenticate_user!, :only => [:new, :create] #filter to only allow signed in users to create new places
+	before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy] #filter to only allow signed in users to create new places and edit
 
 	def index	
 	  @places = Place.order(:name).page(params[:page]) 
@@ -27,16 +27,27 @@ class PlacesController < ApplicationController
 
 	def edit
 		@place = Place.find(params[:id])
+
+		if @place.user != current_user
+			return render :text => 'Not Allowed', :status => :forbidden 
+		end
 	end
 
 	def update
 		@place = Place.find(params[:id])
+		if @place.user != current_user
+			return render :text => 'Not Allowed', :status => :forbidden 
+		end
 		@place.update_attributes(place_params)
 		redirect_to root_path
 	end	
 
 	def destroy
 		@place = Place.find(params[:id])
+		if @place.user != current_user
+			return render :text => 'Not Allowed', :status => :forbidden
+		end
+		
 		@place.destroy
 		redirect_to root_path
 	end
