@@ -16,8 +16,12 @@ class PlacesController < ApplicationController
 
 # create a place that is connected by a particular user
 	def create
-  		current_user.places.create(place_params)
-  		redirect_to root_path
+  		@place = current_user.places.create(place_params)
+  		if @place.valid?
+  			redirect_to root_path
+  		else 
+  			render :new, :status => :unprocessable_entity
+  		end
 	end
 
 #tell the controller how to find the correct place by passing in the id of each place
@@ -39,7 +43,11 @@ class PlacesController < ApplicationController
 			return render :text => 'Not Allowed', :status => :forbidden 
 		end
 		@place.update_attributes(place_params)
-		redirect_to root_path
+		if @place.valid?
+			redirect_to root_path
+		else
+			render :edit, :stats => :unprocessable_entity
+		end		
 	end	
 
 	def destroy
