@@ -20,10 +20,14 @@ class PlacesController < ApplicationController
   		redirect_to root_path
 	end
 
+#tell the controller how to find the correct place by passing in the id of each place
 	def show
 		@place = Place.find(params[:id]) 
 	end
 
+	def edit
+		@place = Place.find(params[:id])
+	end
 
 	private
 # suck in the values from the user after they press create
