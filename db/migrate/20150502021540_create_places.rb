@@ -6,7 +6,7 @@ class CreatePlaces < ActiveRecord::Migration
       	t.text :description
       	t.string :address
 
-      t.timestamps
+      	t.timestamps
     end
   end
 end
