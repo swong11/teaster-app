@@ -27,6 +27,7 @@ class PlacesController < ApplicationController
 #tell the controller how to find the correct place by passing in the id of each place
 	def show
 		@place = Place.find(params[:id]) 
+		@comment = Comment.new
 	end
 
 	def edit
