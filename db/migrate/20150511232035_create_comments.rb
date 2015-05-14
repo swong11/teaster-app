@@ -6,7 +6,7 @@ class CreateComments < ActiveRecord::Migration
     	# add so that we can comment to place and users
     	t.integer :user_id
     	t.integer :place_id
-      	t.timestamps
+      t.timestamps
     end
 
     # make lookups between the different database tables are fast
