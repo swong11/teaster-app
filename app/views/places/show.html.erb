@@ -49,6 +49,8 @@
 
 </div>	
 
+<div class="clear"></div>
+
 <!-- Modal for Comments -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -71,10 +73,25 @@
   </div>
 </div>
 
+<!-- Individual Photos -->
+<h1>Photos</h1>
+
+<!-- Individual Photos Caption-->
+<% @place.photos.each do |photo| %>
+  <div>
+    <blockquote>
+        <%= photo.caption %>
+    </blockquote>
+  </div>
+<% end %>  
+
+<div class="clear"></div>
+
+<!-- Comments Header -->
 <div class="col-xs-10 col-xs-offset-1">
   <h1 class="pull-left">Comments</h1>
 
-<!-- Button trigger modal -->
+<!-- Add a Comment Button -->
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Add a comment
   </button>
