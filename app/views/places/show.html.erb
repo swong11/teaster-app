@@ -36,7 +36,7 @@
   <!-- Map View -->
   <div id="map-canvas"></div>
   <% end %>
-  
+
   <br />
 
 <!-- Edit and Destroy Buttons -->
@@ -49,7 +49,7 @@
 
 </div>	
 
-<!-- Modal -->
+<!-- Modal for Comments -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -81,6 +81,14 @@
 </div>
 
 <div class="clear"></div>
+
+<!-- Upload Photo -->
+<div class="clear"></div>
+<%= simple_form_for @photo, :url => '#' do |f| %>
+  <%= f.input :caption %>
+  <%= f.submit "Upload Photo", :class => 'btn-primary' %>
+<% end %>  
+
 
 <!-- Individual Comments -->
 <% @place.comments.each do |comment| %>
