@@ -21,3 +21,5 @@ end
 
 # merge connects two dictionaries
 	# dictionary: "a data structure" [Hash table] (e.g. {:hello => 'awesome'})
+
+# def create ...etc <----- think of these as the "actions" that you find in the rake routes (in terminal)	
