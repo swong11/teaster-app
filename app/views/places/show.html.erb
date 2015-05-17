@@ -51,6 +51,29 @@
 
 <div class="clear"></div>
 
+
+<!-- Modal for Photos-->
+<div class="modal fade" id="myModalPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add Photo</h4>
+      </div>
+      
+      <%= simple_form_for @photo, :url => place_photos_path(@place) do |f| %>
+        <div class="modal-body">
+          <%= f.input :picture %>
+          <%= f.input :caption %>
+        </div>      
+        <div class="modal-footer">
+          <%= f.submit "Upload Photo", :class => 'btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <!-- Modal for Comments -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -66,55 +89,65 @@
             <%= f.input :rating, :as => :select, :collection => Comment::RATINGS %>
         </div>
         <div class="modal-footer">
-        <%= f.submit "Add a Comment", :class => 'btn btn-primary' %>
-       </div>
+          <%= f.submit "Add a Comment", :class => 'btn btn-primary' %>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
 
-<!-- Individual Photos -->
-<h1>Photos</h1>
+<!-- Photos Header -->
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h1 class="pull-left">Photos</h1>
 
-<!-- Individual Photos Caption-->
-<% @place.photos.each do |photo| %>
-      <%= image_tag photo.picture %>
-      <%= photo.caption %>
-<% end %>  
+  <!-- Add Photo Button -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalPhoto">
+      Add Photo
+    </button>
+  </div>
+
+  <div class="clear"></div>
+
+  <!-- Individual Photos Caption-->
+  <% @place.photos.each do |photo| %>
+        <%= image_tag photo.picture %>       
+        <div class="clear"></div>
+        <%= photo.caption %>
+  <% end %> 
+</div> 
 
 <div class="clear"></div>
 
 <!-- Comments Header -->
-<div class="col-xs-10 col-xs-offset-1">
-  <h1 class="pull-left">Comments</h1>
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h1 class="pull-left">Comments</h1>
 
-<!-- Add a Comment Button -->
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Add a comment
-  </button>
+  <!-- Add a Comment Button -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Add a comment
+    </button>
+  </div>
+
+  <div class="clear"></div>
+
+  <!-- Individual Comments -->
+  <% @place.comments.each do |comment| %>
+    <div class="col-xs-12 col-sm-6">
+      <blockquote>
+          <% if comment.humanized_rating.present? %> 
+            <b><%= comment.humanized_rating %></b>  
+          <% end %>
+
+          <%= comment.message %>
+          <small><%= comment.user.email %></small>
+       </blockquote>   
+    </div>
+  <% end %>
 </div>
 
-<div class="clear"></div>
-
-<!-- Upload Photo -->
-<div class="clear"></div>
-<%= simple_form_for @photo, :url => place_photos_path(@place) do |f| %>
-  <%= f.input :picture %>
-  <%= f.input :caption %>
-  <%= f.submit "Upload Photo", :class => 'btn-primary' %>
-<% end %>  
 
 
-<!-- Individual Comments -->
-<% @place.comments.each do |comment| %>
-  <div class="col-xs-12 col-sm-6">
-    <blockquote>
-        <% if comment.humanized_rating.present? %> 
-          <b><%= comment.humanized_rating %></b>  
-        <% end %>
 
-        <%= comment.message %>
-        <small><%= comment.user.email %></small>
-     </blockquote>   
-  </div>
-<% end %>
+
