@@ -1,11 +1,15 @@
 Teaster::Application.routes.draw do
   devise_for :users
   root 'places#index'
+
   resources :places do 
     # nest our comments route under the places route
     resources :comments, :only => :create 
     resources :photos, :only => :create
   end
+
+  resources :users, :only => :show
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
