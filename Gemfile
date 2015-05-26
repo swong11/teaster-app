@@ -52,6 +52,8 @@ gem 'kaminari'
 
 gem 'simple_form'
 
+gem "factory_girl_rails", "~> 4.0"
+
 #login/logout...etc
 gem 'devise' , '>= 3.2.4'
 
