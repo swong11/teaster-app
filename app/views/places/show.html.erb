@@ -1,3 +1,6 @@
+<br />
+<br />
+
 <!-- Location Block -->
 <div class="booyah-box col-xs-10 col-xs-offset-1">
 	<h1><%= @place.name %></h1>
@@ -97,7 +100,7 @@
 </div>
 
 <!-- Photos Header -->
-<div class="booyah-box col-xs-10 col-xs-offset-1">
+
   <div class="col-xs-10 col-xs-offset-1">
     <h1 class="pull-left">Photos</h1>
 
@@ -111,16 +114,17 @@
 
   <!-- Individual Photos Caption-->
   <% @place.photos.each do |photo| %>
+  <div class="booyah-box col-xs-10 col-xs-offset-1">
         <%= image_tag photo.picture %>       
         <div class="clear"></div>
         <%= photo.caption %>
+        </div> 
   <% end %> 
-</div> 
+
 
 <div class="clear"></div>
 
 <!-- Comments Header -->
-<div class="booyah-box col-xs-10 col-xs-offset-1">
   <div class="col-xs-10 col-xs-offset-1">
     <h1 class="pull-left">Comments</h1>
 
@@ -133,6 +137,7 @@
   <div class="clear"></div>
 
   <!-- Individual Comments -->
+  <div class="booyah-box col-xs-10 col-xs-offset-1">
   <% @place.comments.each do |comment| %>
     <div class="col-xs-12 col-sm-6">
       <blockquote>

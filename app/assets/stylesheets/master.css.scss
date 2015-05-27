@@ -17,6 +17,7 @@ a.navbar-brand:hover{-ms-animation:wiggle .3s 2;-moz-animation:wiggle .3s 2;-web
   padding: 20px;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	padding: 0;
@@ -29,18 +30,22 @@ body {
 }
 
 .navbar.navbar-inverse {
-	background:url('/assets/denim.png'); 
+	background:url('/assets/gray.png'); 
 	border-radius: 0;
 	box-shadow: 0px 1px 3 px #2a2a2a;
   margin-bottom: 0;
+  border: none;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #E3E85A;
+  color: #006600 !important;
   font-size: 30px;
   font-family: 'pacificoregular', sans-serif;
 
 }
+
+ul.nav a:hover { color: #006600 !important; }
+
 
 /*remove asterisks*/
 abbr[title="required"] {
@@ -57,6 +62,7 @@ abbr[title="required"] {
 .clear {
   clear: both;
 }
+
 
 blockquote {
   background: #f9f9f9;
